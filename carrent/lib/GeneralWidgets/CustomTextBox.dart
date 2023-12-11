@@ -1,3 +1,4 @@
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter/material.dart';
@@ -23,15 +24,15 @@ class CustomTextBox extends StatelessWidget {
     this.letterSpacing,
     this.isNumber,
     this.maxLength,
-    this.backgroundColor = AppColors.textBoxColor,
-    this.borderColor = AppColors.mainColor,
+    this.backgroundColor = AppColors.background,
+    this.borderColor = AppColors.borderText,
     this.validator,
     this.focusNode,
     this.onFieldSubmitted,
     this.maxLines = 1,
     this.borderRadius,
     this.isDecimal,
-    this.englishOnly,
+    this.englishOnly = true,
     this.suffixIcon,
     this.spaces = true,
     this.isEmail,
@@ -47,7 +48,7 @@ class CustomTextBox extends StatelessWidget {
   final TextEditingController? controller;
   final bool? isPassword;
   final bool? isDecimal;
-  final Color? borderColor;
+  final Color borderColor;
   final IconData? icon;
   final Function(String)? onChanged;
   final bool? showEyeIcon;
@@ -92,11 +93,7 @@ class CustomTextBox extends StatelessWidget {
             validator: validator,
             onChanged: onChanged,
             initialValue: initialValue,
-            style: TextStyle(
-              fontFamily: FontFamily.bold,
-              letterSpacing: letterSpacing,
-              color: Colors.black,
-            ),
+            style: FontStyles.input.copyWith(letterSpacing: letterSpacing),
             controller: controller,
             focusNode: focusNode,
             onFieldSubmitted: onFieldSubmitted,
@@ -119,7 +116,7 @@ class CustomTextBox extends StatelessWidget {
                         ? [
                             FilteringTextInputFormatter.allow(
                               RegExp(
-                                  '[a-z${spaces == true ? " " : ""}A-Z${spaces == true ? " " : ""}0-9]'),
+                                  '[a-z${spaces == true ? " " : ""}A-Z${spaces == true ? " " : ""}0-9.@#\$%^&*()!]'),
                             )
                           ]
                         : null,
@@ -133,16 +130,19 @@ class CustomTextBox extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               counterText: "",
               hintText: hintText,
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(borderRadius ?? 10),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(borderRadius ?? 10),
-              ),
+              focusedBorder: AppColors.borderObj,
+              enabledBorder: AppColors.borderObj,
+              focusedErrorBorder: AppColors.borderObj,
+              errorBorder: AppColors.borderObj,
+              border: AppColors.borderObj,
               errorText: errorText,
-              prefixIcon: icon != null ? Icon(icon) : null,
+              prefixIcon: icon != null
+                  ? Icon(
+                      icon,
+                      size: 20,
+                      color: AppColors.text,
+                    )
+                  : null,
               suffixIcon: showEyeIcon == true
                   ? IconButton(
                       onPressed: onChangeVisability,
@@ -150,25 +150,16 @@ class CustomTextBox extends StatelessWidget {
                         isPassword == true
                             ? FontAwesomeIcons.eye
                             : FontAwesomeIcons.eyeSlash,
-                        color: Colors.black,
-                        size: 24,
+                        color: AppColors.text,
+                        size: 17,
                       ),
                     )
                   : suffixIcon,
-              hintStyle: TextStyle(
-                fontSize: 15,
-                fontFamily: FontFamily.medium,
-                letterSpacing: letterSpacing,
-              ),
-              labelStyle: TextStyle(
-                fontSize: 15,
-                fontFamily: FontFamily.medium,
-                letterSpacing: letterSpacing,
-              ),
-              errorStyle: TextStyle(
-                fontSize: 13,
-                fontFamily: FontFamily.medium,
-              ),
+              hintStyle: FontStyles.p.copyWith(letterSpacing: letterSpacing),
+              labelStyle:
+                  FontStyles.input.copyWith(letterSpacing: letterSpacing),
+              errorStyle: FontStyles.p
+                  .copyWith(color: Colors.red, letterSpacing: letterSpacing),
               fillColor: backgroundColor,
               filled: true,
             ),

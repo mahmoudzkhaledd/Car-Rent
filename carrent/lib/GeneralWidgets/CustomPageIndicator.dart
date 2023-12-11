@@ -5,7 +5,7 @@ import '../Shared/AppColors.dart';
 class CustomPageIndicator extends StatelessWidget {
   const CustomPageIndicator({
     super.key,
-    this.circleColor = AppColors.secondaryRedColor,
+    this.circleColor = AppColors.secondary,
     required this.itemCount,
     required this.currentIndex,
   });

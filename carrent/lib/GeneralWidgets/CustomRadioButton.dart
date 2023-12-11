@@ -1,3 +1,4 @@
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
 
 import '../Shared/AppColors.dart';
@@ -5,12 +6,13 @@ import '../Shared/Fonts/FontModel.dart';
 import 'AppText.dart';
 
 class CustomRadioButton<T> extends StatelessWidget {
-  const CustomRadioButton(
-      {super.key,
-      required this.text,
-      required this.value,
-      required this.groupValue,
-      required this.onChanged});
+  const CustomRadioButton({
+    super.key,
+    required this.text,
+    required this.value,
+    required this.groupValue,
+    required this.onChanged,
+  });
   final String text;
   final T value;
   final T groupValue;
@@ -21,15 +23,19 @@ class CustomRadioButton<T> extends StatelessWidget {
     return Row(
       children: [
         Radio<T>(
-          activeColor: AppColors.mainColor,
+          visualDensity: const VisualDensity(
+            horizontal: VisualDensity.minimumDensity,
+            vertical: VisualDensity.minimumDensity,
+          ),
+          activeColor: AppColors.primary,
           value: value,
           groupValue: groupValue,
           onChanged: onChanged,
         ),
         AppText(
           text,
-          style: TextStyle(fontFamily: FontFamily.medium, fontSize: 16),
-        )
+          style: FontStyles.body,
+        ),
       ],
     );
   }

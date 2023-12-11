@@ -156,7 +156,7 @@ class Helper {
               ),
               const SizedBox(height: 30),
               CustomButton(
-                text: "حسنا",
+                text: "OK",
                 verticalPadding: 5,
                 onTap: () {
                   Get.back();
@@ -320,7 +320,7 @@ class Helper {
                 children: [
                   Expanded(
                     child: CustomButton(
-                      text: "نعم",
+                      text: "Yes",
                       verticalPadding: 4,
                       onTap: () {
                         Get.back<bool>(result: true);
@@ -330,7 +330,7 @@ class Helper {
                   const SizedBox(width: 20),
                   Expanded(
                     child: CustomButton(
-                      text: "لا",
+                      text: "No",
                       verticalPadding: 4,
                       onTap: () {
                         Get.back<bool>(result: false);

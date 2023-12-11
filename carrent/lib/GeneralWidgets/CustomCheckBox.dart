@@ -1,4 +1,6 @@
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../Shared/AppColors.dart';
 import 'AppText.dart';
@@ -9,7 +11,7 @@ class CustomCheckBox extends StatelessWidget {
     required this.value,
     required this.text,
     required this.onChange,
-    this.color = AppColors.mainColor,
+    this.color = AppColors.primary,
     this.checkColor = Colors.white,
   }) : super(key: key);
   final bool value;
@@ -24,8 +26,8 @@ class CustomCheckBox extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 30,
-            height: 30,
+            width: 24,
+            height: 24,
             decoration: BoxDecoration(
               color: color,
               borderRadius: BorderRadius.circular(6),
@@ -33,13 +35,16 @@ class CustomCheckBox extends StatelessWidget {
             child: value
                 ? Icon(
                     Icons.check,
-                    size: 20,
+                    size: 17,
                     color: checkColor,
                   )
                 : null,
           ),
-          const SizedBox(width: 10),
-          AppText(text),
+          const Gap(7),
+          AppText(
+            text,
+            style: FontStyles.body,
+          ),
         ],
       ),
     );

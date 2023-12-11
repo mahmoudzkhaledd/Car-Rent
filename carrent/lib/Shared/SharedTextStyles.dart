@@ -1,36 +1,42 @@
+import 'package:carrent/Shared/AppColors.dart';
 import 'package:flutter/material.dart';
 
 import 'Fonts/FontModel.dart';
 
 class FontStyles {
-  static TextStyle h1 = TextStyle(
-    fontSize: 25,
+  static TextStyle p = TextStyle(
+    fontSize: 14,
+    fontFamily: FontFamily.regular,
+    color: AppColors.textFade,
+  );
+  static TextStyle small = TextStyle(
+    fontSize: 12,
+    fontFamily: FontFamily.regular,
+    color: AppColors.text,
+  );
+  static TextStyle body = TextStyle(
+    fontSize: 16,
+    fontFamily: FontFamily.regular,
+    color: AppColors.text,
+  );
+  static TextStyle input = TextStyle(
+    fontSize: 16,
+    fontFamily: FontFamily.medium,
+    color: AppColors.text,
+  );
+  static TextStyle title = TextStyle(
+    fontSize: 22,
     fontFamily: FontFamily.bold,
-    color: Colors.black,
+    color: AppColors.text,
   );
-  static TextStyle h2 = TextStyle(
-    fontSize: 20,
-    fontFamily: FontFamily.regular,
-    color: Colors.grey,
+  static TextStyle bigTitle = TextStyle(
+    fontSize: 35,
+    fontFamily: FontFamily.black,
+    color: AppColors.text,
   );
-  static TextStyle h3 = TextStyle(
-    fontSize: 15,
-    fontFamily: FontFamily.regular,
-    color: Colors.grey,
-  );
-  static TextStyle h4 = TextStyle(
-    fontSize: 10,
-    fontFamily: FontFamily.regular,
-    color: Colors.grey,
-  );
-  static TextStyle h5 = TextStyle(
-    fontSize: 14,
-    fontFamily: FontFamily.regular,
-    color: Colors.grey,
-  );
-  static TextStyle h6 = TextStyle(
-    fontSize: 14,
-    fontFamily: FontFamily.regular,
-    color: Colors.grey,
+  static TextStyle listTitle = TextStyle(
+    fontSize: 16,
+    fontFamily: FontFamily.bold,
+    color: AppColors.text,
   );
 }

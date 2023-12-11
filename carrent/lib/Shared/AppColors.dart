@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color mainColor = Color(0xFF61B879);
-  static const Color backgroundColor = Color.fromRGBO(40, 51, 63, 1);
-  static const Color containerColor = Color.fromRGBO(50, 60, 80, 1);
-  static const Color secondaryRedColor = Color.fromRGBO(233, 67, 135, 1);
-  static const Color textBoxColor = Color(0xffE8E8E8);
+  static const Color primary = Color.fromRGBO(93, 59, 229, 1);
+  static const Color secondary = Color.fromRGBO(56, 56, 56, 1);
+  static const Color secondarySelect = Color.fromRGBO(56, 56, 56, 1);
+  static const Color background = Color.fromRGBO(255, 255, 255, 1);
+  static const Color text = Color.fromRGBO(19, 19, 19, 1);
+  static const Color textFade = Color.fromRGBO(102, 102, 102, 1);
+  static const Color borderText = Color.fromRGBO(237, 235, 235, 1);
+  static const Color textInvert = Color.fromRGBO(255, 255, 255, 1);
+  static final borderObj = OutlineInputBorder(
+    borderSide: const BorderSide(color: borderText),
+    borderRadius: BorderRadius.circular(10),
+  );
 }

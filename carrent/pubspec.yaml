@@ -31,9 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core:
-  cloud_firestore:
   firebase_storage:
-  firebase_auth:
   dio:
   http:
   get:
@@ -53,7 +51,9 @@ dependencies:
   font_awesome_flutter:
   dotted_line:
   lottie:
+  gap:
   fluentui_system_icons:
+  dropdown_button2:
   flutter_localizations:
     sdk: flutter
 
@@ -131,39 +131,39 @@ flutter:
       fonts:
         - asset: assets/fonts/Cairo/Cairo-SemiBold.ttf
 
-    ########################### Poppins Font #####################################
+    ########################### Inter Font #####################################
 
-    - family: Poppins-Black
+    - family: Inter-Black
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Black.ttf
+        - asset: assets/fonts/Inter/Inter-Black.ttf
 
-    - family: Poppins-Bold
+    - family: Inter-Bold
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/Inter/Inter-Bold.ttf
 
-    - family: Poppins-ExtraBold
+    - family: Inter-ExtraBold
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Inter/Inter-ExtraBold.ttf
 
-    - family: Poppins-ExtraLight
+    - family: Inter-ExtraLight
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Inter/Inter-ExtraLight.ttf
 
-    - family: Poppins-Light
+    - family: Inter-Light
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Light.ttf
+        - asset: assets/fonts/Inter/Inter-Light.ttf
 
-    - family: Poppins-Medium
+    - family: Inter-Medium
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Inter/Inter-Medium.ttf
 
-    - family: Poppins-Regular
+    - family: Inter-Regular
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/Inter/Inter-Regular.ttf
 
-    - family: Poppins-SemiBold
+    - family: Inter-SemiBold
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
   
   # fonts:
   #   - family: Schyler

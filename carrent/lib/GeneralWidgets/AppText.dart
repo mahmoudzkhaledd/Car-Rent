@@ -1,3 +1,5 @@
+import 'package:carrent/Shared/AppColors.dart';
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
 
 import '../Shared/Fonts/FontModel.dart';
@@ -41,9 +43,7 @@ class AppText extends StatelessWidget {
       textScaleFactor: textScaleFactor,
       maxLines: maxLines,
       style: style == null
-          ? TextStyle(
-              fontFamily: FontFamily.regular,
-            )
+          ? FontStyles.body
           : style!.fontFamily == null
               ? style!.copyWith(
                   fontFamily: FontFamily.regular,

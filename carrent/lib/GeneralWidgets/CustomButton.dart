@@ -1,6 +1,7 @@
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
 import '../Shared/AppColors.dart';
-import '../Shared/Fonts/FontModel.dart';
+
 import 'AppText.dart';
 
 class CustomButton extends StatelessWidget {
@@ -8,18 +9,18 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     this.borderd,
-    this.backgroundColor = AppColors.mainColor,
+    this.backgroundColor = AppColors.text,
     this.textColor = Colors.white,
     this.horizontalPadding,
-    this.verticalPadding,
+    this.verticalPadding = 10,
     required this.onTap,
-    this.fontSize = 13,
+    this.fontSize,
     this.borderWidth,
     this.icon,
     this.filled,
     this.borderColor,
     this.textStyle,
-    this.borderRadius,
+    this.borderRadius = 5,
   });
   final TextStyle? textStyle;
   final Widget? icon;
@@ -33,7 +34,7 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final double? fontSize;
   final double? borderWidth;
-  final double? borderRadius;
+  final double borderRadius;
   final bool? filled;
   @override
   Widget build(BuildContext context) {
@@ -41,18 +42,18 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadius ?? 15),
+          borderRadius: BorderRadius.circular(borderRadius),
           color: filled != false ? backgroundColor : null,
           border: borderd == true
               ? Border.all(
                   width: borderWidth ?? 0,
-                  color: borderColor ?? AppColors.mainColor,
+                  color: borderColor ?? AppColors.primary,
                 )
               : null,
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: horizontalPadding ?? 0,
-          vertical: verticalPadding ?? 10,
+          horizontal: horizontalPadding ?? 24,
+          vertical: verticalPadding ?? 14,
         ),
         child: Center(
           child: Row(
@@ -65,11 +66,7 @@ class CustomButton extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: textStyle ??
-                      TextStyle(
-                        color: textColor,
-                        fontFamily: FontFamily.bold,
-                        fontSize: fontSize ?? 13,
-                      ),
+                      FontStyles.body.copyWith(color: Colors.white),
                 ),
               ),
               if (icon != null)
