@@ -19,9 +19,11 @@ class Team {
       leader = User.fromJson(json['leader']);
     }
     if (json['members'] is List<dynamic>) {
-      members = (json['members'] as List<dynamic>)
-          .map((e) => User.fromJson(e))
-          .toList();
+      for (var e in json['members']) {
+        if (e is Map<String, dynamic>) {
+          members.add(User.fromJson(e));
+        }
+      }
     }
     if (json['pendingInvitations'] is List<dynamic>) {
       for (final e in json['pendingInvitations'] as List<dynamic>) {

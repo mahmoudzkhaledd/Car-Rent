@@ -55,7 +55,7 @@ class RentCarBody extends StatelessWidget {
                 if (cubit.rentedCar == null) {
                   return CustomContainer(
                     width: double.infinity,
-                    onTap: cubit.chooseCar,
+                    onTap: cubit.rentedCar == null ? cubit.chooseCar : null,
                     height: 200,
                     borderRadius: 10,
                     child: const Center(
@@ -67,7 +67,6 @@ class RentCarBody extends StatelessWidget {
                 }
                 return CarWidget(
                   car: cubit.rentedCar!,
-                  onTap: (e) => cubit.chooseCar(),
                   chooseMode: true,
                   cornerWidget: CustomIconButton(
                     icon: Icons.clear,

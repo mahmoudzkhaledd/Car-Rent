@@ -7,7 +7,7 @@ appRoute.use(authRoutes);
 appRoute.use(userValidatorMiddleware);
 appRoute.use(coreRoutes);
 
-
+ 
 appRoute.all('*', (req, res) => {
     res.status(404).json({ msg: `Can't find this route "${req.originUrl}"` });
 });

@@ -2,8 +2,7 @@ const validator = require('../../../../middlewares/validatorMiddleware');
 const { check } = require('express-validator');
 
 module.exports.rentCarValidator = [
-    check("userId").isMongoId().withMessage("Please Enter valid user id"),
-    check("carId").isMongoId().withMessage("Please Enter valid car id"),
+
     check("clientName").isLength({ min: 3, max: 100 })
         .withMessage("Client name must be between 3 and 100 characters!"),
     check("clientPhone").isLength({ min: 11, max: 15 })

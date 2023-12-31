@@ -34,7 +34,7 @@ exports.getTeam = asyncHandeler(
                 path: "pendingInvitations", 
             },
         ]);
-
+        console.log(team);
         res.status(200).json({ team })
     }
 )

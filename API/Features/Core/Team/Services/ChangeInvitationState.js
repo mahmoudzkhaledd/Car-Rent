@@ -12,20 +12,26 @@ exports.changeInvState = asyncHandeler(
             return res.sendStatus(404);
         }
         const { accept } = req.body;
-        const ans = await Invitation.deleteOne({
+        const inv = await Invitation.findOne({
             userId: userModel.id,
             _id: invId,
         });
-        if (ans.deletedCount == 0) {
+        if (inv == null) {
             return res.sendStatus(404);
         }
         if (accept) {
             await Team.updateOne({
+                _id: inv._id,
+            }, {
                 $push: {
                     members: userModel.id,
                 },
+                $pull: {
+                    pendingInvitations: userModel.id,
+                }
             });
         }
+        await inv.deleteOne();
         res.sendStatus(200);
     }
 )

@@ -43,7 +43,7 @@ exports.rentCar = asyncHandeler(
                 });
             }
         }
-
+        console.log(userModel.id);
         
         const rent = await Rent.create({
             startingDate,
