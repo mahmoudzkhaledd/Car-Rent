@@ -8,16 +8,18 @@ const schema = new mongoose.Schema({
     },
     name: {
         type: String,
+        trim: true,
         required: [true, "Name is required !"],
     },
     model: {
         type: String,
-        
+        trim: true,
         required: [true, "Model is required !"],
     },
     panelNumber: {
         type: String,
         unique: true,
+        trim: true,
         required: [true, "Panel Number is required !"],
     },
 
@@ -32,6 +34,7 @@ const schema = new mongoose.Schema({
     notes: {
         type: String,
         default: "",
+        trim: true,
     },
 }, { timestamps: true, });
 

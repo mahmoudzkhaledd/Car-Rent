@@ -19,7 +19,7 @@ exports.editRent = asyncHandeler(
             paidPrice,
             remainingPrice,
         } = req.body;
-
+        console.log(req.body);
         if (!require('mongoose').Types.ObjectId.isValid(carId) || !require('mongoose').Types.ObjectId.isValid(rentId)) {
             return res.sendStatus(404);
         }

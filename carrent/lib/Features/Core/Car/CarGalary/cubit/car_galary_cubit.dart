@@ -21,12 +21,22 @@ class CarGalaryCubit extends Cubit<CarGalaryState> {
   final Car car;
   final CarService service = CarService();
   int get getFillNumber => chosenImages.length + car.images.length;
-  void removeFileImage(String e) {
+  void removeFileImage(String e) async {
+    if (!await Helper.showYesNoMessage(
+      "Delete Image",
+      "Are you sure to delete this image?",
+      icon: Icons.delete,
+    )) return;
     chosenImages.remove(e);
     emit(CarGalaryChagneImage());
   }
 
   void removeNetworkImage(int idx) async {
+    if (!await Helper.showYesNoMessage(
+      "Delete Image",
+      "Are you sure to delete this image?",
+      icon: Icons.delete,
+    )) return;
     final res = await Helper.showLoading(
       "Please Wait",
       "Deleting the image",
@@ -59,11 +69,15 @@ class CarGalaryCubit extends Cubit<CarGalaryState> {
   void viewImage(String? imageUrl, File? imageFile) async {
     await Get.dialog(
       AlertDialog(
-        content: imageUrl != null
-            ? Helper.loadNetworkImage(imageUrl, 'car.png')
-            : imageFile != null
-                ? Image.file(imageFile)
-                : const SizedBox(),
+        contentPadding: EdgeInsets.zero,
+        content: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: imageUrl != null
+              ? Helper.loadNetworkImage(imageUrl, 'car.png')
+              : imageFile != null
+                  ? Image.file(imageFile)
+                  : const SizedBox(),
+        ),
       ),
     );
   }

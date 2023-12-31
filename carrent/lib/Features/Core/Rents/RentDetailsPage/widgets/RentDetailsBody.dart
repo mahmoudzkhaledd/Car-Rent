@@ -29,7 +29,7 @@ class RentDetailsBody extends StatelessWidget {
             onRefresh: () async => cubit.getData(),
             child: const LoadingFailsWidget(
               title: "Loading filed, please try again later.",
-              image: null,
+              image: "not found.png",
             ),
           );
         }
@@ -105,7 +105,7 @@ class RentDetailsBody extends StatelessWidget {
                         verticalPadding: 0,
                         onTap: () {
                           Get.to(
-                            () => AddRentCar(
+                            () => RentCarPage(
                               rent: cubit.rent,
                             ),
                           );

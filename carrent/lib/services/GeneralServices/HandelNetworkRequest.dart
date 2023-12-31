@@ -10,7 +10,7 @@ class HandelNetworkRequest {
     if (res.msg != null) {
       await Helper.showMessage(
         'Error',
-        res.msg!,
+        res.data?['msg'] ?? res.msg!,
         icon: res.icon,
       );
     }

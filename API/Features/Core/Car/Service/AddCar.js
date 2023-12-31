@@ -51,6 +51,7 @@ exports.addNewCar = asyncHandeler(
             if (err.code == 11000) {
                 return res.sendStatus(400);
             }
+            return res.status(401).json({ msg: err.msg });
         }
 
     }

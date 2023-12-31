@@ -25,8 +25,22 @@ class AddNewCarCubit extends Cubit<AddNewCarState> {
   int page = 0;
   int currentPageIndex = 0;
   AddNewCarCubit(Car? car) : super(AddNewCarInitial()) {
-    this.car = car ?? Car();
     editMode = car != null;
+    if (car != null) {
+      getData(car.id);
+    } else {
+      this.car = Car();
+    }
+  }
+  void getData(id) async {
+    emit(AddNewCarLoadingState());
+    final car = await service.getUserCar(id);
+    if (car == null) {
+      emit(AddNewCarFailedState());
+      return;
+    }
+    this.car = car;
+    emit(AddNewCarSuccessState());
   }
 
   void chooseImage() async {
@@ -59,7 +73,7 @@ class AddNewCarCubit extends Cubit<AddNewCarState> {
       car.thumbnailImage = base64Encode(chosenImage!.readAsBytesSync());
     }
     final res = await Helper.showLoading(
-      "Adding your car",
+      editMode ? "Editing your car" : "Adding your car",
       "Please wait",
       () => editMode ? service.updateCar(car) : service.addNewCar(car.toJson()),
     );
@@ -68,7 +82,7 @@ class AddNewCarCubit extends Cubit<AddNewCarState> {
     if (!ans) return;
     await Helper.showMessage(
       "Success",
-      'The car added succefully',
+      editMode ? "The car edited succefully" : 'The car added succefully',
       icon: FluentIcons.checkmark_20_regular,
     );
   }

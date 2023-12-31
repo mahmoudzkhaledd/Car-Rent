@@ -1,56 +1,47 @@
-import 'package:carrent/GeneralWidgets/CustomButton.dart';
+import 'package:carrent/Features/Home/HomePage/Widgets/CustomAppBar.dart';
+import 'package:carrent/Features/Home/HomePage/Widgets/OptionsRow.dart';
+import 'package:carrent/Features/Home/HomePage/Widgets/RecentRents.dart';
+import 'package:carrent/GeneralWidgets/CustomContainer.dart';
+import 'package:carrent/Shared/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:get/get.dart';
-
-import '../../../Core/Car/AddNewCar/View/AddNewCar.dart';
-import '../../../Core/Car/MyCars/View/MyCars.dart';
-import '../../../Core/Rents/My Rents/view/MyRents.dart';
-import '../../../Core/Rents/RentCar/view/RentCar.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
+    return RefreshIndicator(
+      onRefresh: () async {},
+      child: ListView(
+        children: [
+          const CustomAppBar(),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomContainer(
+                  width: double.infinity,
+                  height: 200,
+                  backColor: AppColors.instance.primary,
+                  borderRadius: 10,
+                  child: const SizedBox(),
+                ),
+                const Gap(20),
+                const Center(
+                  child: SizedBox(
+                    height: 100,
+                    child: OptionsRow(),
+                  ),
+                ),
+                const RecentRents(),
+              ],
+            ),
           ),
-          child: Column(
-            children: [
-              CustomButton(
-                text: 'Add new car',
-                onTap: () {
-                  Get.to(() => const AddNewCarPage());
-                },
-              ),
-              const Gap(20),
-              CustomButton(
-                text: 'My cars',
-                onTap: () {
-                  Get.to(() => const MyCarsPage());
-                },
-              ),
-              const Gap(20),
-              CustomButton(
-                text: 'Rent Car',
-                onTap: () {
-                  Get.to(() => const AddRentCar());
-                },
-              ),
-              const Gap(20),
-              CustomButton(
-                text: 'My Rents',
-                onTap: () {
-                  Get.to(() => const MyRentsPage());
-                },
-              ),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

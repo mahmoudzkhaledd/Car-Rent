@@ -34,7 +34,7 @@ class CarPageBody extends StatelessWidget {
               child: LoadingFailsWidget(
                 title:
                     "Sorry, We can't find the car you want, please try again later.",
-                image: null,
+                image: "not found.png",
               ),
             ),
           );

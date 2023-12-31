@@ -1,4 +1,6 @@
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import 'AppText.dart';
 import 'Image.dart';
@@ -24,12 +26,11 @@ class LoadingFailsWidget extends StatelessWidget {
               image!,
               width: imageWidth ?? 200,
             ),
+          if (image != null) const Gap(10),
           AppText(
             title,
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 18,
-            ),
+            style: FontStyles.body.copyWith(fontSize: 16),
           ),
         ],
       ),

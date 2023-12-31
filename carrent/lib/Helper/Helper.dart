@@ -18,7 +18,7 @@ import 'Loading.dart';
 class Helper {
   static const _shape = RoundedRectangleBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(10),
     ),
   );
   static ImageProvider loadImageProvider(String url, String assetsPath) {
@@ -329,27 +329,23 @@ class Helper {
                 style: FontStyles.body,
               ),
               const SizedBox(height: 30),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Expanded(
-                    child: CustomButton(
-                      text: "Yes",
-                      verticalPadding: 5,
-                      onTap: () {
-                        Get.back<bool>(result: true);
-                      },
-                    ),
+                  CustomButton(
+                    text: "Yes",
+                    verticalPadding: 7,
+                    onTap: () {
+                      Get.back<bool>(result: true);
+                    },
                   ),
-                  const SizedBox(width: 20),
-                  Expanded(
-                    child: CustomButton(
-                      text: "No",
-                      verticalPadding: 5,
-                      onTap: () {
-                        Get.back<bool>(result: false);
-                      },
-                    ),
+                  const Gap(15),
+                  CustomButton(
+                    text: "No",
+                    verticalPadding: 7,
+                    onTap: () {
+                      Get.back<bool>(result: false);
+                    },
                   ),
                 ],
               ),
@@ -363,7 +359,10 @@ class Helper {
 
   static Size size(BuildContext context) => MediaQuery.of(context).size;
 
-  static Widget loadingWidget() => const Center(
-        child: CircularProgressIndicator(),
+  static Widget loadingWidget([double? size]) => SizedBox.square(
+        dimension: size,
+        child: const Center(
+          child: CircularProgressIndicator(),
+        ),
       );
 }

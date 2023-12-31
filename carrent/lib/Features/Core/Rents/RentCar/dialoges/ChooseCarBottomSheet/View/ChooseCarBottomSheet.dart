@@ -25,7 +25,7 @@ class ChooseCarBottomSheet extends GetView<ChooseCarBottomsheetCtrl> {
           return const Center(
             child: LoadingFailsWidget(
               title: "Error while loading cars, please try again later",
-              image: null,
+              image: "not found.png",
             ),
           );
         }

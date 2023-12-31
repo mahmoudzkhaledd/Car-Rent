@@ -25,7 +25,7 @@ class FontStyles {
     color: AppColors.instance.text,
   );
   static TextStyle title = TextStyle(
-    fontSize: 22,
+    fontSize: 18.4,
     fontFamily: FontFamily.bold,
     color: AppColors.instance.text,
   );

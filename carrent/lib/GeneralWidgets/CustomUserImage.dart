@@ -26,6 +26,7 @@ class CustomUserImage extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: radius,
+          backgroundColor: Colors.transparent,
           backgroundImage: file != null
               ? FileImage(File(file!.path))
               : url.isNotEmpty

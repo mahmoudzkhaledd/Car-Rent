@@ -46,10 +46,9 @@ class Car {
     data['name'] = name;
     data['model'] = model;
     data['passengersNumber'] = passengersNumber;
-
     data['panelNumber'] = panelNumber;
     data['thumbnailImage'] = thumbnailImage;
-    data['images'] = images;
+    //data['images'] = images;
     data['notes'] = notes;
     return data;
   }

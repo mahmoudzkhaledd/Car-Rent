@@ -36,10 +36,10 @@ class CarRent extends StatelessWidget {
             fontSize: 17,
             color: AppColors.instance.text,
           ),
+          backgroundColor: AppColors.instance.background,
           foregroundColor: AppColors.instance.text,
           elevation: 0,
         ),
-        useMaterial3: true,
       ),
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.instance.background,
@@ -50,9 +50,9 @@ class CarRent extends StatelessWidget {
             color: AppColors.instance.text,
           ),
           foregroundColor: AppColors.instance.text,
+          backgroundColor: AppColors.instance.background,
           elevation: 0,
         ),
-        useMaterial3: true,
       ),
       home: const SplashScreen(),
     );

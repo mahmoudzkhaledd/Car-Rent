@@ -15,7 +15,7 @@ class CarGalaryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<CarGalaryCubit>();
-    print(cubit.getFillNumber);
+
     return BlocBuilder<CarGalaryCubit, CarGalaryState>(
       buildWhen: (previous, current) => current is CarGalaryChagneImage,
       builder: (ctx, state) => ListView.builder(
@@ -60,6 +60,7 @@ class CarGalaryBody extends StatelessWidget {
                       icon: Icons.clear,
                       backColor: Colors.white,
                       borderRadius: 200,
+                      iconSize: 20,
                       verticalPadding: 5,
                       horizontalPadding: 5,
                     ),

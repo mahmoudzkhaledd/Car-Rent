@@ -6,8 +6,8 @@ import '../../../../../Models/Rent.dart';
 import '../cubit/add_rent_car_cubit.dart';
 import '../widgets/RentCarBody.dart';
 
-class AddRentCar extends StatelessWidget {
-  const AddRentCar({super.key, this.rent});
+class RentCarPage extends StatelessWidget {
+  const RentCarPage({super.key, this.rent});
   final Rent? rent;
   @override
   Widget build(BuildContext context) {

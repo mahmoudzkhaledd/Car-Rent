@@ -71,7 +71,7 @@ class CustomTextBox extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(borderRadius ?? 7),
+        borderRadius: BorderRadius.circular(borderRadius ?? 20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

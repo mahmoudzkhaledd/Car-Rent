@@ -27,7 +27,7 @@ class MyRentsBody extends StatelessWidget {
           return const LoadingFailsWidget(
             title:
                 "There is a problem with fetching data, please try again later.",
-            image: null,
+            image: "not found.png",
           );
         }
 
@@ -41,90 +41,101 @@ class MyRentsBody extends StatelessWidget {
                   vertical: 10,
                   horizontal: 20,
                 ),
-                children: [
-                  Row(
-                    children: [
-                      AppText(
-                        'My Rents',
-                        style: FontStyles.title,
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: cubit.switchListView,
-                        icon: Icon(cubit.listView
-                            ? Icons.calendar_month_outlined
-                            : Icons.list),
-                      ),
-                    ],
-                  ),
-                  const Gap(10),
-                  if (!cubit.listView)
-                    CustomContainer(
-                      backColor: Colors.transparent,
-                      borderRadius: 10,
-                      borderWidth: 1,
-                      height: 450,
-                      child: TableCalendar(
-                        headerStyle: const HeaderStyle(
-                          formatButtonVisible: false,
-                          titleCentered: true,
+                children: cubit.rents.isEmpty
+                    ? [
+                        const Gap(50),
+                        const LoadingFailsWidget(
+                          title: 'No Rents Yet!',
+                          image: "not found.png",
                         ),
-                        eventLoader: (day) {
-                          final ev =
-                              cubit.rentsDates[day.toString().split(' ')[0]];
-
-                          if (ev == null) {
-                            return [];
-                          } else {
-                            return ev;
-                          }
-                        },
-                        rangeStartDay: cubit.rangeStartDay,
-                        rangeEndDay: cubit.rangeEndDay,
-                        onDaySelected: cubit.selectDate,
-                        focusedDay: cubit.currentDate,
-                        selectedDayPredicate: (day) =>
-                            isSameDay(day, cubit.currentDate),
-                        firstDay: DateTime(2010),
-                        lastDay: DateTime.now().add(const Duration(days: 1000)),
-                      ),
-                    )
-                  else
-                    ...cubit.rents.map(
-                      (rent) => Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: RentWidget(
-                          rent: rent,
-                          listView: cubit.listView,
+                      ]
+                    : [
+                        Row(
+                          children: [
+                            AppText(
+                              'My Rents',
+                              style: FontStyles.title,
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: cubit.switchListView,
+                              icon: Icon(cubit.listView
+                                  ? Icons.calendar_month_outlined
+                                  : Icons.list),
+                            ),
+                          ],
                         ),
-                      ),
-                    ),
-                  const Gap(20),
-                  if (!cubit.listView)
-                    if (cubit.selectedRent.isNotEmpty)
-                      ...cubit.selectedRent
-                          .map(
-                            (e) => Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: RentWidget(
-                                rent: e,
+                        const Gap(10),
+                        if (!cubit.listView)
+                          CustomContainer(
+                            backColor: Colors.transparent,
+                            borderRadius: 10,
+                            borderWidth: 1,
+                            height: 450,
+                            child: TableCalendar(
+                              headerStyle: const HeaderStyle(
+                                formatButtonVisible: false,
+                                titleCentered: true,
                               ),
+                              eventLoader: (day) {
+                                final ev = cubit
+                                    .rentsDates[day.toString().split(' ')[0]];
+
+                                if (ev == null) {
+                                  return [];
+                                } else {
+                                  return ev;
+                                }
+                              },
+                              rangeStartDay: cubit.rangeStartDay,
+                              rangeEndDay: cubit.rangeEndDay,
+                              onDaySelected: cubit.selectDate,
+                              focusedDay: cubit.currentDate,
+                              selectedDayPredicate: (day) =>
+                                  isSameDay(day, cubit.currentDate),
+                              firstDay: DateTime(2010),
+                              lastDay: DateTime.now()
+                                  .add(const Duration(days: 1000)),
                             ),
                           )
-                          .toList()
-                    else
-                      CustomContainer(
-                        borderRadius: 10,
-                        borderWidth: 1,
-                        height: 100,
-                        child: Center(
-                          child: AppText(
-                            "No rents in this date!",
-                            style: FontStyles.body,
+                        else
+                          ...cubit.rents.map(
+                            (rent) => Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: RentWidget(
+                                rent: rent,
+                                listView: cubit.listView,
+                                selectRent: cubit.selectRent,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                ],
+                        const Gap(20),
+                        if (!cubit.listView)
+                          if (cubit.selectedRent.isNotEmpty)
+                            ...cubit.selectedRent
+                                .map(
+                                  (e) => Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: RentWidget(
+                                      rent: e,
+                                      selectRent: cubit.selectRent,
+                                    ),
+                                  ),
+                                )
+                                .toList()
+                          else
+                            CustomContainer(
+                              borderRadius: 10,
+                              borderWidth: 1,
+                              height: 100,
+                              child: Center(
+                                child: AppText(
+                                  "No rents in this date!",
+                                  style: FontStyles.body,
+                                ),
+                              ),
+                            ),
+                      ],
               ),
             );
           },

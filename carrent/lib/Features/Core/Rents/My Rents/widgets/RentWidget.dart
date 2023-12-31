@@ -19,8 +19,10 @@ class RentWidget extends StatelessWidget {
     super.key,
     required this.rent,
     this.listView = false,
+    required this.selectRent,
   });
   final bool listView;
+  final Function(Rent) selectRent;
   TableRow buildDescription(String title, String data) => TableRow(
         children: [
           TableCell(
@@ -46,8 +48,6 @@ class RentWidget extends StatelessWidget {
   final Rent rent;
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<MyRentsCubit>();
-
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -57,17 +57,18 @@ class RentWidget extends StatelessWidget {
           borderRadius: 10,
           child: Column(
             children: [
-              Table(
-                children: [
-                  buildDescription('Car name', rent.car!.name),
-                  buildDescription('Car model', rent.car!.model),
-                  buildDescription('Client name', rent.clientName),
-                  buildDescription(
-                    'Total price',
-                    rent.totalPrice.toStringAsFixed(2),
-                  ),
-                ],
-              ),
+              if (rent.car != null)
+                Table(
+                  children: [
+                    buildDescription('Car name', rent.car!.name),
+                    buildDescription('Car model', rent.car!.model),
+                    buildDescription('Client name', rent.clientName),
+                    buildDescription(
+                      'Total price',
+                      rent.totalPrice.toStringAsFixed(2),
+                    ),
+                  ],
+                ),
               const Gap(20),
               CustomButton(
                 text: "See full details",
@@ -94,7 +95,7 @@ class RentWidget extends StatelessWidget {
               iconColor: Colors.white,
               backColor: AppColors.instance.primary,
               icon: Icons.calendar_month_rounded,
-              onTap: () => cubit.selectRent(rent),
+              onTap: () => selectRent(rent),
             ),
           ),
       ],

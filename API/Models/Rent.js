@@ -14,26 +14,32 @@ const schema = new mongoose.Schema({
     },
     startingDate: {
         type: String,
+        trim: true,
         required: [true, "Starting Date is required !"],
     },
     endingDate: {
         type: String,
+        trim: true,
         required: [true, "Ending Date is required !"],
     },
     clientName: {
         type: String,
+        trim: true,
         required: [true, "Client Name is required !"],
     },
     clientPhone: {
         type: String,
+        trim: true,
         required: [true, "Client Phone is required !"],
     },
     clientIdentity: {
         type: String,
+        trim: true,
         required: [true, "Client Identity is required !"],
     },
     totalPrice: {
         type: Number,
+        
         required: [true, "Total Price is required !"],
     },
     paidPrice: {

@@ -1,3 +1,4 @@
+import 'package:carrent/Helper/Helper.dart';
 import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
 import '../Shared/AppColors.dart';
@@ -20,14 +21,16 @@ class CustomButton extends StatelessWidget {
     this.filled,
     this.borderColor,
     this.textStyle,
+    this.loading = false,
     this.borderRadius = 10,
   });
   final TextStyle? textStyle;
   final Widget? icon;
   final String text;
   final bool? borderd;
+  final bool loading;
   final Color? backgroundColor;
-  final Color textColor;
+  final Color? textColor;
   final Color? borderColor;
   final double? horizontalPadding;
   final double? verticalPadding;
@@ -39,12 +42,12 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: loading ? null : onTap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           color: filled != false
-              ? backgroundColor ?? AppColors.dark.secondary
+              ? backgroundColor ?? AppColors.instance.primary
               : null,
           border: borderd == true
               ? Border.all(
@@ -55,33 +58,35 @@ class CustomButton extends StatelessWidget {
         ),
         padding: EdgeInsets.symmetric(
           horizontal: horizontalPadding ?? 16,
-          vertical: verticalPadding ?? 18,
+          vertical: verticalPadding ?? 20,
         ),
         child: Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: AppText(
-                  text,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: textStyle ??
-                      FontStyles.input.copyWith(
-                        color: AppColors.dark.text,
-                        fontSize: 16,
-                      ),
-                ),
-              ),
-              if (icon != null)
-                Row(
+          child: loading
+              ? Helper.loadingWidget(20)
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    icon!,
+                    Flexible(
+                      child: AppText(
+                        text,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style: textStyle ??
+                            FontStyles.listTitle.copyWith(
+                              color: textColor ?? AppColors.instance.text,
+                              fontSize: fontSize ?? 16,
+                            ),
+                      ),
+                    ),
+                    if (icon != null)
+                      Row(
+                        children: [
+                          icon!,
+                        ],
+                      ),
                   ],
                 ),
-            ],
-          ),
         ),
       ),
     );

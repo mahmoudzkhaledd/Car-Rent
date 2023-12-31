@@ -44,7 +44,10 @@ class CarService {
 
   Future<ResponseResult> updateCar(Car car) async {
     final res = await NetworkService.handelRequest(
-      future: dio.put('cars/${car.id}', data: car.toJson()),
+      future: dio.put(
+        'cars/${car.id}',
+        data: car.toJson(),
+      ),
     );
     if (res == null) {
       return ResponseResult(

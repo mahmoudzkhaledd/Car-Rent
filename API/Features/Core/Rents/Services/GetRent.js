@@ -13,10 +13,12 @@ exports.getRent = asyncHandeler(
                 path: 'carId',
                 select: { images: 0 },
             },
-            
         ]);
-        await rent.populate("carId.thumbnailImage",{ _id: 1, url: 1, userId: 1, });
-  
-        res.status(200).json({  rent });
+        if (rent == null) { 
+            return res.sendStatus(404);
+        }
+        await rent.populate("carId.thumbnailImage", { _id: 1, url: 1, userId: 1, });
+
+        res.status(200).json({ rent });
     }
 )

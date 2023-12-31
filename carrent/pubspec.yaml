@@ -35,7 +35,8 @@ dependencies:
   dio:
   http:
   get:
-  intl: 
+  intl:
+  fl_chart: 
   flutter_svg:
   flutter_bloc:
   flutter_local_notifications:

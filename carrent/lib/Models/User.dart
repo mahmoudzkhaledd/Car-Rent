@@ -39,17 +39,19 @@ class User {
 
   String get getQrCode => 'user $id';
   User.fromJson(Map<String, dynamic> json) {
-    id = json['_id'];
-    firstName = json['firstName'];
+    id = json['_id'] ?? "";
+    firstName = json['firstName'] ?? "";
     phone = json['phone'] ?? "";
-    lastName = json['lastName'];
-    email = json['email'];
+    lastName = json['lastName'] ?? "";
+    email = json['email'] ?? "";
     password = json['password'] ?? "";
-    verifiedEmail = json['verifiedEmail'];
-    gender = json['gender'];
+    verifiedEmail = json['verifiedEmail'] ?? false;
+    gender = json['gender'] ?? false;
     profilePic = json['profilePic'] ?? "";
     companyName = json['companyName'] ?? "";
-    birthdate = DateTime.parse(json['birthdate'].toString());
+    if (json['birthdate'] != null) {
+      birthdate = DateTime.parse(json['birthdate'].toString());
+    }
   }
   Map<String, dynamic> toJsonSignup() => {
         "firstName": firstName,

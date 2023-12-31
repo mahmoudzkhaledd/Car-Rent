@@ -1,3 +1,4 @@
+import 'package:carrent/Shared/Fonts/FontModel.dart';
 import 'package:flutter/material.dart';
 
 import 'AppText.dart';
@@ -30,50 +31,46 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      clipBehavior: Clip.hardEdge,
-      borderRadius: BorderRadius.circular(borderRadius ?? 10),
-      child: Material(
-        child: InkWell(
-          onTap: onTap,
-          child: Ink(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: backColor ?? Colors.white,
-              border: bordered == true
-                  ? Border.all(
-                      width: 2,
-                      color: Colors.black,
-                    )
-                  : null,
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: horizontalPadding ?? 20,
-              vertical: verticalPadding ?? 20,
-            ),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
+    return Column(
+      children: [
+        ClipRRect(
+          clipBehavior: Clip.hardEdge,
+          borderRadius: BorderRadius.circular(borderRadius ?? 10),
+          child: Material(
+            child: InkWell(
+              onTap: onTap,
+              child: Ink(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: backColor ?? Colors.white,
+                  border: bordered == true
+                      ? Border.all(
+                          width: 2,
+                          color: Colors.black,
+                        )
+                      : null,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding ?? 10,
+                  vertical: verticalPadding ?? 10,
+                ),
+                child: Center(
+                  child: Icon(
                     icon,
                     color: iconColor,
                     size: iconSize,
                   ),
-                  if (text != null)
-                    AppText(
-                      text!,
-                      style: const TextStyle(
-                        fontSize: 12,
-                      ),
-                    )
-                ],
+                ),
               ),
             ),
           ),
         ),
-      ),
+        if (text != null)
+          AppText(
+            text!,
+            style: TextStyle(fontSize: 13, fontFamily: FontFamily.medium),
+          )
+      ],
     );
   }
 }

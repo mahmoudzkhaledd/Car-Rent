@@ -1,3 +1,4 @@
+import 'package:carrent/GeneralWidgets/Image.dart';
 import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
@@ -24,16 +25,21 @@ class LoginBody extends StatelessWidget {
         child: Form(
           key: context.read<LoginCubit>().formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const CustomImage(
+                width: 100,
+                'Logo.png',
+              ),
+              const Gap(50),
               Center(
                 child: AppText(
-                  "Welcome back to Car rent app",
+                  "Login",
                   textAlign: TextAlign.center,
                   style: FontStyles.bigTitle,
                 ),
               ),
-              const Gap(40),
+              const Gap(20),
               CustomTextBox(
                 hintText: "Email or Phone number",
                 icon: FluentIcons.mail_28_regular,
@@ -64,19 +70,33 @@ class LoginBody extends StatelessWidget {
                   );
                 },
               ),
-              TextButton(
-                onPressed: () {
-                  Get.to(() => const ForgetPasswordPage());
-                },
-                child: AppText(
-                  "Forget your password?",
-                  style: FontStyles.p,
-                ),
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Get.to(() => const ForgetPasswordPage());
+                    },
+                    child: AppText(
+                      "Forget your password?",
+                      style: FontStyles.p,
+                    ),
+                  ),
+                ],
               ),
               const Gap(20),
               CustomButton(
                 text: "Login",
                 onTap: context.read<LoginCubit>().login,
+              ),
+              const Gap(20),
+              TextButton(
+                onPressed: () {
+                  Get.to(() => const ForgetPasswordPage());
+                },
+                child: AppText(
+                  "Signup",
+                  style: FontStyles.p,
+                ),
               ),
             ],
           ),

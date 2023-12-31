@@ -56,7 +56,7 @@ class MyCarsBody extends StatelessWidget {
                         : const Center(
                             child: LoadingFailsWidget(
                               title: "No results found !",
-                              image: null,
+                              image: "not found.png",
                             ),
                           ),
                   ),

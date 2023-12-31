@@ -20,8 +20,10 @@ class CustomContainer extends StatelessWidget {
     this.gradient,
     this.boxShadow,
     this.onTap,
-    this.bordered = true,
+    this.bordered = false,
+    this.clip,
   });
+  final Clip? clip;
   final bool bordered;
   final double? borderRadius;
   final double? verticalPadding;
@@ -44,7 +46,7 @@ class CustomContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: clip ?? Clip.none,
         constraints: constraints,
         decoration: BoxDecoration(
           gradient: gradient,
@@ -52,7 +54,7 @@ class CustomContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 0),
           color: backColor,
           border: Border.all(
-            width: borderWidth ?? 1,
+            width: borderWidth ?? 0,
             color: bordered
                 ? borderColor ?? AppColors.instance.borderText
                 : Colors.transparent,

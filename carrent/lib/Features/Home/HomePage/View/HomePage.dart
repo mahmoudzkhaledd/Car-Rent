@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../Cubits/HomeCubit/home_cubit.dart';
 import 'HomePageBody.dart';
 
@@ -13,9 +12,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => HomeCubit(),
-          child: const SafeArea(
-            child: HomePageBody(),
-          ),
+          child: const HomePageBody(),
         ),
       ),
     );

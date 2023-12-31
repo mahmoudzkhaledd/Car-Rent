@@ -3,19 +3,23 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     firstName: {
         type: String,
+        trim: true,
         required: [true, "First Name is required!"]
     },
     lastName: {
         type: String,
+        trim: true,
         required: [true, "Last Name is required!"]
     },
     companyName: {
         type: String,
+        trim: true,
         required: [true, "Company Name is required!"]
     },
     email: {
         type: String,
         unique: true,
+        trim: true,
         required: [true, "Email is required!"]
     },
     password: {
@@ -24,10 +28,12 @@ const schema = new mongoose.Schema({
     },
     phone: {
         type: String,
+        trim: true,
         required: [true, "Phone is required!"]
     },
     birthdate: {
         type: String,
+        trim: true,
         required: [true, "Birthdate is required!"]
     },
     gender: {
@@ -36,7 +42,17 @@ const schema = new mongoose.Schema({
     },
     verifiedEmail: {
         type: Boolean,
-        default: false, 
+        default: false,
+    },
+    leadingTeam: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Team",
+        default: null,
+    },
+    team: {
+        type: mongoose.Schema.ObjectId,
+        ref: "Team",
+        default: null,
     },
     profilePic: String,
 }, { timestamps: true, });

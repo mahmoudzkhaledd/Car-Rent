@@ -70,9 +70,22 @@ class RentServices {
       future: dio.get('rents/$rentId'),
     );
 
-    if (res == null || res.statusCode != 200) {
+    if (res == null || res.statusCode != 200 || res.data['rent'] == null) {
       return null;
     }
     return Rent.fromJson(res.data['rent']);
+  }
+
+  Future<String?> deleteRent(String rentId) async {
+    final res = await NetworkService.handelRequest(
+      future: dio.delete('rents/$rentId'),
+    );
+
+    if (res == null || res.statusCode != 200) {
+      return res != null && res.data['msg'] != null
+          ? res.data['msg'].toString()
+          : "Error has occured, please try again!";
+    }
+    return null;
   }
 }

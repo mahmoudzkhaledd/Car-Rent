@@ -1,4 +1,5 @@
 import 'package:carrent/GeneralWidgets/Image.dart';
+import 'package:carrent/Helper/Helper.dart';
 import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -59,34 +60,74 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // const Icon(
-          //   FluentIcons.vehicle_car_48_regular,
-          //   color: AppColors.instance.text,
-          //   size: 115,
-          // ),
-          const CustomImage(
-            'City driver-amico.png',
-            width: 200,
-          ),
-          const SizedBox(height: 10),
-          AnimatedBuilder(
-            animation: fade,
-            builder: (ctx, ani) => FadeTransition(
-              opacity: fade,
-              child: AppText(
-                "Car Rent",
-                style: FontStyles.title,
-              ),
-            ),
-          ),
-        ],
+  Widget buildBackground() {
+    return ClipPath(
+      clipper: ClipContainer(),
+      child: Container(
+        width: double.infinity,
+        height: Helper.size(context).height - 100,
+        color: Colors.white,
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        buildBackground(),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CustomImage(
+                'Vehicle Sale-amico.png',
+                width: 300,
+              ),
+              const SizedBox(height: 10),
+              AnimatedBuilder(
+                animation: fade,
+                builder: (ctx, ani) => FadeTransition(
+                  opacity: fade,
+                  child: AppText(
+                    "Car Rent",
+                    style: FontStyles.bigTitle,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ClipContainer extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    final height = size.height;
+    path.lineTo(0, height - 50);
+    final firstControlPoint = Offset(size.width / 4, height);
+    final firstEndPoint = Offset(size.width / 2, height - 60);
+    final secondControlPoint =
+        Offset(size.width - (size.width / 4), height - 110);
+    final secondEndPoint = Offset(size.width, height - 40);
+
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstEndPoint.dx, firstEndPoint.dy);
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondEndPoint.dx, secondEndPoint.dy);
+
+    path.lineTo(size.width, size.height / 3);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
   }
 }

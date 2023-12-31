@@ -1,11 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' as getx;
-
-import '../../../../Models/AppConfigs.dart';
 import '../../../../Models/ResponseResult.dart';
 import '../../../../Models/User.dart';
-import '../../../../Shared/AppReposetory.dart';
 import '../../../../Shared/AppUser.dart';
 import '../../../../services/GeneralServices/NetworkService.dart';
 import '../../../../services/GeneralServices/StorageService.dart';
@@ -27,7 +24,6 @@ class LoginService {
       if (getx.Get.find<AppUser>().user!.verifiedEmail) {
         await StorageServices.instance.saveUserToken(res.data['token']);
         NetworkService.refreshAccessToken(res.data['token']);
-        AppRepository.appConfigs = AppConfigs.fromJson(res.data['appConfigs']);
       }
 
       return ResponseResult(

@@ -11,13 +11,12 @@ class CustomCheckBox extends StatelessWidget {
     required this.value,
     required this.text,
     required this.onChange,
-    this.color,
     this.checkColor = Colors.white,
   }) : super(key: key);
   final bool value;
   final String text;
   final Function(bool) onChange;
-  final Color? color;
+
   final Color checkColor;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class CustomCheckBox extends StatelessWidget {
             width: 24,
             height: 24,
             decoration: BoxDecoration(
-              color: color ?? AppColors.instance.primary,
+              color: AppColors.instance.primary,
               borderRadius: BorderRadius.circular(6),
             ),
             child: value

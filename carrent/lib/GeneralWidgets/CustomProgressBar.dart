@@ -1,45 +1,78 @@
+import 'package:carrent/GeneralWidgets/AppText.dart';
+import 'package:carrent/Shared/AppColors.dart';
+import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class CustomProgressBar extends StatelessWidget {
   const CustomProgressBar({
     super.key,
     required this.percentage,
+    this.height,
+    this.title,
+    this.showPrecentage = false,
+    this.textColor,
+    this.spaceColor,
+    this.progressColor,
   });
 
   final double percentage;
+  final double? height;
+  final String? title;
+  final Color? textColor;
+  final Color? spaceColor;
+  final Color? progressColor;
+  final bool showPrecentage;
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    double defaultHeight = 6;
+    return Column(
       children: [
-        Container(
-          height: 15,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(200),
-            color: const Color(0xffD9D9D9),
-          ),
-        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              flex: (percentage * 100).toInt(),
-              child: Container(
-                height: 15,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(200),
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFF55CB74),
-                      Color(0xFF13A795),
-                    ],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-                ),
+            if (title != null)
+              AppText(
+                title!,
+                style: FontStyles.listTitle
+                    .copyWith(fontSize: 15, color: textColor),
+              ),
+            if (showPrecentage)
+              AppText(
+                "${percentage.toStringAsFixed(2)}%",
+                style: FontStyles.listTitle
+                    .copyWith(fontSize: 15, color: textColor),
+              ),
+          ],
+        ),
+        if (title != null || showPrecentage) const Gap(5),
+        Stack(
+          children: [
+            Container(
+              height: height ?? defaultHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(200),
+                color: spaceColor ?? AppColors.instance.secondary,
               ),
             ),
-            Expanded(
-                flex: ((1 - percentage) * 100).toInt(),
-                child: const SizedBox()),
+            Row(
+              children: [
+                Expanded(
+                  flex: (percentage * 100).toInt(),
+                  child: Container(
+                    height: height ?? defaultHeight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(200),
+                      color: progressColor ?? AppColors.instance.text,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: ((1 - percentage) * 100).toInt(),
+                  child: const SizedBox(),
+                ),
+              ],
+            ),
           ],
         ),
       ],

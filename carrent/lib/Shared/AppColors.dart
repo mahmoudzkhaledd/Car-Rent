@@ -15,8 +15,8 @@ class AppColors {
   final OutlineInputBorder borderObj;
 
   static AppColors light = AppColors(
-    primary: const Color.fromRGBO(93, 59, 229, 1),
-    secondary: const Color.fromRGBO(250, 250, 250, 1),
+    primary: const Color.fromRGBO(8, 26, 48, 1),
+    secondary: const Color.fromRGBO(238, 240, 246, 1),
     secondarySelect: const Color.fromRGBO(245, 246, 250, 1),
     background: const Color.fromRGBO(255, 255, 255, 1),
     text: const Color.fromRGBO(19, 19, 19, 1),
@@ -25,7 +25,7 @@ class AppColors {
     textInvert: const Color.fromRGBO(255, 255, 255, 1),
     borderObj: OutlineInputBorder(
       borderSide: const BorderSide(color: Color.fromRGBO(237, 235, 235, 1)),
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(20),
     ),
   );
 

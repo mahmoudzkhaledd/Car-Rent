@@ -168,7 +168,6 @@ class SignupBody extends StatelessWidget {
                 builder: (context, state) {
                   return CustomCheckBox(
                     value: cubit.acceptConditions,
-                    color: Colors.blueAccent,
                     text: "Accept terms and conditions",
                     onChange: cubit.changeConditions,
                   );
