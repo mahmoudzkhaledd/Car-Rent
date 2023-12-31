@@ -21,7 +21,7 @@ exports.changeInvState = asyncHandeler(
         }
         if (accept) {
             await Team.updateOne({
-                _id: inv._id,
+                _id: inv.teamId,
             }, {
                 $push: {
                     members: userModel.id,
