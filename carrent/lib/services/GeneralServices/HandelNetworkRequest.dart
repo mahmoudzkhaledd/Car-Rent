@@ -3,6 +3,7 @@ import 'package:carrent/Models/ResponseResult.dart';
 
 class HandelNetworkRequest {
   static Future<bool> handelRequest(ResponseResult res) async {
+    print(res.data);
     if (res.success) {
       return true;
     }
