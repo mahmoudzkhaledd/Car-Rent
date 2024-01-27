@@ -69,9 +69,11 @@ class TeamView extends StatelessWidget {
           )
         else
           ...teams.map(
-            (e) => TeamWidget(team: e),
+            (e) => Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: TeamWidget(team: e),
+            ),
           ),
-        const Gap(50),
       ],
     );
   }

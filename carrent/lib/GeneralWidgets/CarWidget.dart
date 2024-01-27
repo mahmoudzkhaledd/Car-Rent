@@ -4,6 +4,7 @@ import 'package:carrent/GeneralWidgets/CustomContainer.dart';
 import 'package:carrent/GeneralWidgets/SubUserDescription.dart';
 import 'package:carrent/Helper/Helper.dart';
 import 'package:carrent/Models/Car.dart';
+import 'package:carrent/Shared/AppColors.dart';
 import 'package:carrent/Shared/AppUser.dart';
 import 'package:carrent/Shared/SharedTextStyles.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -29,6 +30,8 @@ class CarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+      borderColor: AppColors.instance.borderText,
+      bordered: true,
       marginBottom: 15,
       verticalPadding: 15,
       horizontalPadding: 20,

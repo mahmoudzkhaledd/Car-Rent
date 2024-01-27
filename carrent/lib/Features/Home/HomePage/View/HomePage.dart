@@ -1,3 +1,4 @@
+import 'package:carrent/Features/Home/HomePage/View/HomePageBody2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../Cubits/HomeCubit/home_cubit.dart';
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => HomeCubit(),
-          child: const HomePageBody(),
+          child: const HomePageBody2(),
         ),
       ),
     );

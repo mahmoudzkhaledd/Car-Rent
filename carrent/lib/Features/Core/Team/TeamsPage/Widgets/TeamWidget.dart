@@ -12,30 +12,29 @@ class TeamWidget extends StatelessWidget {
   final Team team;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: AppColors.instance.borderText,
-          width: 1,
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.instance.secondarySelect,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ListTile(
+        onTap: () {
+          Get.to(
+            () => TeamPage(
+              teamId: team.id,
+            ),
+          );
+        },
+        title: AppText(
+          team.name,
+          style: FontStyles.listTitle,
         ),
-        borderRadius: BorderRadius.circular(15),
+        subtitle: AppText(
+          "Created at: ${DateFormat.yMMMEd('en_US').format(team.createdAt)}",
+          style: FontStyles.p,
+        ),
+        trailing: const Icon(Icons.arrow_forward_ios),
       ),
-      onTap: () {
-        Get.to(
-          () => TeamPage(
-            teamId: team.id,
-          ),
-        );
-      },
-      title: AppText(
-        team.name,
-        style: FontStyles.listTitle,
-      ),
-      subtitle: AppText(
-        "Created at: ${DateFormat.yMMMEd('en_US').format(team.createdAt)}",
-        style: FontStyles.p,
-      ),
-      trailing: const Icon(Icons.arrow_forward_ios),
     );
   }
 }

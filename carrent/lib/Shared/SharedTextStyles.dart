@@ -25,7 +25,7 @@ class FontStyles {
     color: AppColors.instance.text,
   );
   static TextStyle title = TextStyle(
-    fontSize: 18.4,
+    fontSize: 20,
     fontFamily: FontFamily.bold,
     color: AppColors.instance.text,
   );
@@ -35,7 +35,7 @@ class FontStyles {
     color: AppColors.instance.text,
   );
   static TextStyle listTitle = TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: FontFamily.bold,
     color: AppColors.instance.text,
   );

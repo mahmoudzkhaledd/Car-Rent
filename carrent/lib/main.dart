@@ -1,5 +1,6 @@
 import 'package:carrent/Configs.dart';
 import 'package:carrent/Features/Auth/SplashScreen/View/SplashScreen.dart';
+import 'package:carrent/Features/Home/HomePage/View/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
